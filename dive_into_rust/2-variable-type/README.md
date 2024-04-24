@@ -46,3 +46,29 @@
   - `Arc<T>`:   指向类型T的原子型引用计数指针, 共享所有权, 线程安全
   - `Cow<'a,T>`:Clone-on-write, 写时复制指针, 可能是借用指针或者具有所有权的指针
 - 类型转换, 使用as关键字: 编译器认为合理的类型转换
+## 复合数据类型
+- `let empty: () = ();` 单元类型
+- 空元组(unit类型)和空结构体一样, 都是占用0内存空间
+- `struct Color(i32,i32,i32);` tuple struct
+```rust
+// 被想象成这样的结构体
+struct Color{
+    0: i32,
+    1: i32,
+    2: i32,
+}
+```
+- `tuple, struct, tuple struct`: 有一致的内存对齐策略, 一致的占用空间规则
+- `tuple struct`一个有用的场景是基于一个类型创建一个新的类型, 类似于Go中的`type H map[string]any`
+  - `struct NewInt(int)`, 这个新的类型 `NewInt` 可以有不同的方法, 满足不同的trait
+- Rust的`enum`类型的变量需要区分它里面的数据究竟是哪种变体, 所以它包含了一个内部的`tag`标记来描述当前变量属于哪种类型, 但是对用户不可见
+  - `enum`会进行内存对齐操作
+- 类型递归定义: Rust符合类型允许递归定义
+```rust
+struct Recursive {
+	data: i32,
+	rec: Recursive
+}
+// 编译出错, 因为Recursive的内存布局无法计算, 公式如下
+// size_of::<Recursive>() == 4 + size_of::<Recursive>(), 实数范围内无解, 我想其他语言也是一样! 
+```
