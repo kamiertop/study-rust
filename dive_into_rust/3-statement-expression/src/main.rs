@@ -9,6 +9,7 @@ fn main() {
 	// loop_while();
 	func_for()
 }
+
 #[allow(unused)]
 fn test1() -> (i32,i32){
 	// x的类型是()
