@@ -1,3 +1,5 @@
+[生命周期](https://www.bilibili.com/video/BV1az4y1e7jA/)
+
 # 借用
 
 - 变量对其管理的内存拥有所有权. 所有权可以被转移, 也可以被借用.
