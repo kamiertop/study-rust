@@ -1,0 +1,2 @@
+- 某些情况下借用的范围被过度拉长了, 以至于某些实质上是安全的代码也被阻止了.
+- A rule is worthless if it is not enforced.
