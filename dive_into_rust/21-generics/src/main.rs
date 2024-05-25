@@ -1,3 +1,4 @@
+#[allow(unused)]
 fn main() {}
 
 #[allow(unused)]
@@ -52,26 +53,39 @@ fn test3() {
 	}
 }
 
-trait ConvertTo<T> {
-	fn convert(&self) -> T;
-}
-
-impl ConvertTo<f32> for i32 {
-	fn convert(&self) -> f32 {
-		0.3_f32
-	}
-}
-
-impl ConvertTo<f64> for i32 {
-	fn convert(&self) -> f64 {
-		0.3_f64
-	}
-}
 
 impl ConvertTo1 for i32 {
 	type Dest = f32;
 	fn convert(&self) -> Self::Dest {
 		100_f32
+	}
+}
+
+#[cfg(test)]
+mod generic_trait {
+	trait ConvertTo<T> {
+		fn convert(&self) -> T;
+	}
+
+	impl ConvertTo<f32> for i32 {
+		fn convert(&self) -> f32 {
+			*self as f32
+		}
+	}
+
+	impl ConvertTo<f64> for i32 {
+		fn convert(&self) -> f64 {
+			*self as f64
+		}
+	}
+
+	#[test]
+	fn generics_trait() {
+		let i: i32 = 10;
+		let x: f32 = i.convert();
+		let y: f64 = i.convert();
+		println!("x: {}", x);
+		println!("y: {}", y);
 	}
 }
 
@@ -97,6 +111,7 @@ mod tests {
 		}
 	}
 
+	#[allow(unused)]
 	fn main() {
 		let v1 = vec![1i32, 2, 3];
 		let v2 = 1_i32;
