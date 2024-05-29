@@ -1,4 +1,4 @@
-#[feature(coroutines)]
+// #[feature(coroutines)]
 fn main() {
 	// let mut _generator = || {
 	// 	yield 1;
