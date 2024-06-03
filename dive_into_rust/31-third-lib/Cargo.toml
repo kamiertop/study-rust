@@ -1,0 +1,13 @@
+[package]
+name = "third-lib"
+edition = "2021"
+
+
+[dependencies]
+threadpool = "1.8.1"
+scoped_threadpool = "0.1.9"
+parking_lot = "0.12.3"
+crossbeam = "0.8.4"
+crossbeam-channel = "0.5.13"
+go-spawn = "0.1.2"
+rand = "0.9.0-alpha.1"
