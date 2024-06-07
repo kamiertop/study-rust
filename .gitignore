@@ -16,3 +16,6 @@ Cargo.lock
 *.exe
 .idea
 .vscode
+*.o
+*.lib
+*.a
