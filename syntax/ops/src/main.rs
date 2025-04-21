@@ -1,4 +1,7 @@
+use crate::vector::Vector;
+
 mod vector;
+
 
 fn main() {
 	let v1 = Vector { value: vec![1, 2, 3] };
@@ -10,3 +13,4 @@ fn main() {
 	// 输出结果
 	println!("{:?}", v3);  // 输出: Vector { value: [5, 7, 9] }
 }
+
